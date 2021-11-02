@@ -1,10 +1,3 @@
-.item {
-    height: 96px;
-    font-size: 60px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.item-column {
-    width: calc(96px * 3);
+.hide {
+    display: none;
 }

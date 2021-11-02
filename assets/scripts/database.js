@@ -7,14 +7,16 @@ const questions = [
         question: 'Qual o grupo em que todas as palavras foram escritas corretamente?',
         level: 'easy',
         category: 'portugues',
-        answers: {
-          a: 'Asterisco, beneficente, meteorologia, entretido',
-          b: 'Asterisco, beneficiente, metereologia, entretido',
-          c: 'Asterístico, beneficiente, metereologia, entretido',
-          d: 'Asterístico, beneficiente, meteorologia, entertido',
-        },
-        correctAnswer: 'a',
-    },
+        answers: [
+            'Asterisco, beneficente, meteorologia, entretido',
+            'Asterisco, beneficiente, metereologia, entretido',
+            'Asterístico, beneficiente, metereologia, entretido',
+            'Asterístico, beneficiente, meteorologia, entertido'
+        ],
+        correctAnswer: 0,
+    }
+]
+/*
     {
         question: 'Qual o número mínimo de jogadores numa partida de futebol?',
         level: 'easy',

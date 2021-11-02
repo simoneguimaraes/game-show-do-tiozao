@@ -9,22 +9,23 @@
 
 </head>
 <body>
-    
-    <div id="quiz">
         <h1>Show do Tiozão</h1>
         
-        <div id="quiz-container">
-            <div id="question"></div>
-            <div id="answer-container">
-                <button class="answer" id="answerA"></button>
-                <button class="answer" id="answerB"></button>
-                <button class="answer" id="answerC"></button>
-                <button class="answer" id="answerD"></button>
+        <div class="container">
+            <div id="question-container" class="hide">
+              <div id="question">Pergunta</div>
+              <div id="answer-buttons">
+                <button class="btn">Resposta A</button>
+                <button class="btn">Resposta B</button>
+                <button class="btn">Resposta C</button>
+                <button class="btn">Resposta D</button>
+              </div>
             </div>
-            <button id="submit"></button>
-        </div>
-    </div>
-
+            <div class="controls">
+                <button id="play-btn" class="play-btn">Start</button>
+                <button id="confirm-btn" class="confirm-btn hide">Confirma</button>
+            </div>
+          </div>
 
     <script src="./assets/scripts/game.js"></script>
 </body>

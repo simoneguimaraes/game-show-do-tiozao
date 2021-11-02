@@ -1,10 +1,8 @@
 
-
-
 let level = ['easy', 'medium', 'hard']
 let category = ['atualidade', 'literatura', 'ciencia', 'historia', 'geografia', 'logica', 'portugues']
 
-let questions = [
+const questions = [
     {
         question: 'Qual o grupo em que todas as palavras foram escritas corretamente?',
         level: 'easy',
@@ -64,11 +62,7 @@ let questions = [
           d: 'Jânio Quadros',
         },
         correctAnswer: 'a',
-    },
-
-
-
-
+    }
 ];
 
 /* 

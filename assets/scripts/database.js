@@ -1,11 +1,11 @@
 
-let level = ['easy', 'medium', 'hard']
+let level = ['fácil', 'médio', 'difícil']
 let category = ['atualidade', 'literatura', 'ciencia', 'historia', 'geografia', 'logica', 'portugues']
 
 const questions = [
     {
         question: 'Qual o grupo em que todas as palavras foram escritas corretamente?',
-        level: 'easy',
+        level: 'fácil',
         category: 'portugues',
         answers: [
             'Asterisco, beneficente, meteorologia, entretido',
@@ -17,7 +17,7 @@ const questions = [
     },
     {
         question: 'Qual o número mínimo de jogadores numa partida de futebol?',
-        level: 'easy',
+        level: 'fácil',
         category: 'atualidade',
         answers: [
             '8',
@@ -29,7 +29,7 @@ const questions = [
     },
     {
         question: 'De quem é a famosa frase “Penso, logo existo"?',
-        level: 'easy',
+        level: 'fácil',
         category: 'literatura',
         answers: [
             'Platão',
@@ -41,7 +41,7 @@ const questions = [
     },
     {
         question: 'Qual o nome do presidente do Brasil que ficou conhecido como Jango?',
-        level: 'easy',
+        level: 'fácil',
         category: 'historia',
         answers: [
             'João Goulart',
@@ -52,8 +52,44 @@ const questions = [
         correctAnswer: 'João Goulart'
     },
     {
+        question: 'Qual o livro mais vendido no mundo a seguir à Bíblia?',
+        level: 'médio',
+        category: 'atualidade',
+        answers: [
+            'O Senhor dos Anéis',
+            'Dom Quixote',
+            'O Pequeno Príncipe',
+            'Harry Potter e a Pedra Filosofal'
+        ],
+        correctAnswer: 'Dom Quixote'
+    },
+    {
+        question: 'Quantas casas decimais tem o número pi?',
+        level: 'médio',
+        category: 'logica',
+        answers: [
+            'Duas',
+            'Milhares',
+            'Vinte',
+            'Infinitas'
+        ],
+        correctAnswer: 'Infinitas'
+    },
+    {
+        question: 'Atualmente, quantos elementos químicos a tabela periódica possui?',
+        level: 'médio',
+        category: 'ciencia',
+        answers: [
+            '113',
+            '118',
+            '109',
+            '108'
+        ],
+        correctAnswer: '118'
+    },
+    {
         question: 'Quais o menor e o maior país do mundo?',
-        level: 'medium',
+        level: 'médio',
         category: 'geografia',
         answers: [
             'Mônaco e Canadá',
@@ -62,43 +98,25 @@ const questions = [
             'Vaticano e Rússia'
         ],
         correctAnswer: 'Vaticano e Rússia'
+    },
+    {
+        question: '',
+        level: 'difícil',
+        category: '',
+        answers: [
+            '',
+            '',
+            '',
+            ''
+        ],
+        correctAnswer: ''
     }
 ]
 
 /*
 { 
-    category: 'atualidade'
-    level: 'medium'
-    question: 'Qual o livro mais vendido no mundo a seguir à Bíblia?'
-    answer-a: 'O Senhor dos Anéis'
-    answerB: 'Dom Quixote'
-    answerC: 'O Pequeno Príncipe'
-    answerD: 'Harry Potter e a Pedra Filosofal'
-A: answerB
-}
-{ 
-    category: 'logica'
-    level: 'medium'
-    question: 'Quantas casas decimais tem o número pi?'
-    answer-a: 'Duas'
-    answerB: 'Milhares'
-    answerC: 'Vinte'
-    answerD: 'Infinitas'
-A: answerD
-}
-{ 
-    category: 'ciencia'
-    level: 'medium'
-    question: 'Atualmente, quantos elementos químicos a tabela periódica possui?'
-    answer-a: '113'
-    answerB: '118'
-    answerC: '109'
-    answerD: '108'
-A: answerB
-}
-{ 
     category: 'portugues'
-    level: 'medium'
+    level: 'médio'
     question: 'O que a palavra "legend" significa em português?'
     answer-a: 'História'
     answerB: 'Lenda'
@@ -108,7 +126,7 @@ A: answerB
 }
 { 
     category: 'atualidades'
-    level: 'medium'
+    level: 'médio'
     question: 'Quais os países que têm a maior e a menor expectativa de vida do mundo?'
     answer-a: 'Japão e Serra Leoa'
     answerB: 'Austrália e Afeganistão'

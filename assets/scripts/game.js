@@ -1,3 +1,4 @@
+const logoElement = document.getElementById("logo");
 const playButton = document.getElementById("play-btn");
 const nextButton = document.getElementById("next-btn");
 const resetButton = document.getElementById("reset-btn");
@@ -9,35 +10,76 @@ const loserGame = document.getElementById("loserGame")
 const timerElement = document.getElementById("timer")
 const wrongAnswerElement = document.getElementById("wrongAnswer")
 const wrongAnswerCounterElement = document.getElementById("wrongAnswerCounter")
+const progressBarBorder = document.getElementById("progress-bar-border")
+const progressBarElement = document.getElementById("progress-bar")
 
 
-let shuffledQuestions, currentQuestionIndex, currentQuestion;
-let seconds = 10;
+let shuffledQuestions, currentQuestionIndex, currentQuestion, questionLevelIndex, isCorrect;
+let seconds;
 
 //começar o jogo
 playButton.addEventListener("click", startGame);
-
+progressBarBorder.classList.add("hide");
 //quando começar o jogo, esconder o botão play e mostrar as perguntas
 function startGame() {
+  questionLevelIndex = 1;
   playButton.classList.add("hide");
+  logoElement.classList.add("hide");
   shuffledQuestions = Math.floor(Math.random() * questions.length);
-  currentQuestionIndex = 0;
   currentQuestion = questions[shuffledQuestions];
   questionContainerElement.classList.remove("hide");
   setNextQuestion();
   updateTimerElement();
   timerCountdown();
-  wrongAnswer();
+  progressBarBorder.classList.remove("hide");
 }
 
 //toda vez que eu clicar em confirma, ele vai para a próxima pergunta
 nextButton.addEventListener("click", () => {
-	currentQuestion = questions[Math.floor(Math.random() * questions.length)]
-	setNextQuestion();
+  //como sortear aleatoriamente e jogar as que ja foram sorteadas para o fim da array
+  if(questionLevelIndex < 5) {
+    const filterLevelIndexEasy = questions.filter((element) => element.level === 'fácil')
+    currentQuestionIndex = Math.floor(Math.random() * (Math.floor(filterLevelIndexEasy.length - (filterLevelIndexEasy.length/2))))
+    currentQuestion = filterLevelIndexEasy[currentQuestionIndex];
+    const questionEl = filterLevelIndexEasy.slice(currentQuestionIndex, 1);
+    filterLevelIndexEasy.push(questionEl);
+
+
+  } else if (questionLevelIndex > 4 && questionLevelIndex < 9) {
+    const filterLevelIndexMedium = questions.filter((element) => element.level === 'médio')
+    currentQuestionIndex = Math.floor(Math.random() * (Math.floor(filterLevelIndexMedium.length - (filterLevelIndexMedium.length/2))))
+    currentQuestion = filterLevelIndexMedium[currentQuestionIndex];
+    const questionEl = filterLevelIndexMedium.slice(currentQuestionIndex, 1);
+    filterLevelIndexMedium.push(questionEl);
+
+
+  } else {
+    const filterLevelIndexHard = questions.filter((element) => element.level === 'difícil')
+    currentQuestionIndex = Math.floor(Math.random() * (Math.floor(filterLevelIndexHard.length - (filterLevelIndexHard.length/2))))
+    currentQuestion = filterLevelIndexHard[currentQuestionIndex];
+    const questionEl = filterLevelIndexHard.slice(currentQuestionIndex, 1);
+    filterLevelIndexHard.push(questionEl);
+
+  }
+  
+  /*
+  isCorrect = false
+  if (isCorrect === false) {
+
+  } else {
+
+  }
+  */
+  setNextQuestion();
 });
 
 // a cada nova pergunta, ele vai buscar o array de respostas
 function setNextQuestion() {
+  if (questionLevelIndex === 10) {
+    return resetGame();
+  }
+  
+  seconds = 15;
   questionElement.innerHTML = currentQuestion.question;
   for (let i = 0; i < answerButtonsElement.children.length; i++) {
 	  if(answerButtonsElement.children[i].classList.contains("correct")) {
@@ -45,22 +87,45 @@ function setNextQuestion() {
 	  }
     answerButtonsElement.children[i].innerHTML = currentQuestion.answers[i];
   }
+  updateTimerElement();
+  nextButton.classList.remove("hide");
+  wrongAnswerElement.classList.remove("hide")
+
+  for (let i = 0; i < answerButtonsElement.children.length; i++) {
+    answerButtonsElement.children[i].disabled = false;
+    answerButtonsElement.children[i].classList.remove("correct")
+    answerButtonsElement.children[i].classList.remove("wrong")
+  }
+  questionLevelIndex++;
+  
+  progressBarElement.style.width = `${(questionLevelIndex/12) * 99}px`
+
 }
+
 
 //funcionalidades de resposta certa e errada
 answerButtonsElement.addEventListener("click", (event) => {
   const chosenAnswer = event.target;
-  console.log(chosenAnswer);
-  if (chosenAnswer.innerText === currentQuestion.correctAnswer) {
-    chosenAnswer.classList.add("correct");
-    nextButton.classList.remove("hide");
-	  //não deixar clicar nas outras opcoes
-  } else {
-    //nao esta adicionando a classe de resposta errada
-    chosenAnswer.classList.add("wrong");
-    setTimeout(resetGame, 2000);
-    updateWrongAnsCounter();
-  }
+  if(chosenAnswer.classList.contains('btn')) {
+    if (chosenAnswer.innerText === currentQuestion.correctAnswer) {
+      chosenAnswer.classList.add("correct");
+      for (let i = 0; i < answerButtonsElement.children.length; i++) {
+        if (answerButtonsElement.children[i] !== chosenAnswer) {
+          answerButtonsElement.children[i].disabled = true;
+        }
+      }
+     } else {
+      for (let i = 0; i < answerButtonsElement.children.length; i++) {
+        if (answerButtonsElement.children[i] !== chosenAnswer) {
+          answerButtonsElement.children[i].disabled = true;
+        }
+      }
+      wrongAnswer();
+      chosenAnswer.classList.add("wrong");
+        
+    }
+  } 
+    
 });
 
 //quando voce perde o jogo, aparece mensagem e reload da pagina
@@ -68,6 +133,7 @@ function resetGame() {
 	maincontent.classList.add("hide")
 	loserGame.classList.remove("hide")
   timerElement.classList.add("hide")
+  progressBarBorder.classList.add("hide");
 }
 
 resetButton.addEventListener("click", () => {
@@ -89,6 +155,7 @@ function timerCountdown() {
       seconds--;
     } else {
       clearInterval(myTimer);
+      wrongAnswer();
     }
     updateTimerElement()
   }, 1000)
@@ -96,26 +163,24 @@ function timerCountdown() {
 
 //3 respostas erradas antes de perder o jogo
 function wrongAnswer() {
-  wrongAnswerElement.classList.remove("hide")
+  wrongAnswerCounterElement.innerHTML = (Number(wrongAnswerCounterElement.innerText) - 1)
+  if(Number(wrongAnswerCounterElement.innerText) === 0) {
+    setTimeout(resetGame, 2000);
+  }
 }
 
-//toda vez que a resposta for errada, contar 1
-//quando somar 3, resetar o jogo.
 function updateWrongAnsCounter() {
-  wrongAnswerCounterElement
+  wrongAnswerCounterElement--
 }
 
-//TO DO
-//resetar timer a cada nova pergunta
 
-//se eu acertar a resposta, esconder o timer
-
-//se a pessoa nao clicar em "proxima pergunta", ir automaticamente em 5 segundos
-
-//está pulando para a proxima pergunta sem responder antes
-
-// nao poder apertar outras respostas depois de acertar a pergunta
-
+//ISSUES
+//se o tempo acabar após 3 vidas, acaba o jogo
 // tirar as perguntas do random e nao repetir a pergunta
 
+
+//MELHORAR
+//colocar o botao "proxima pergunta" apenas depois que a pessoa responder
+//se a pessoa nao clicar em "proxima pergunta", ir automaticamente em 5 segundos
+// ao inves de "Jogar De Novo" ir para a pagina inicial, ir para a primeira pergunta
 // aumentar o nível da pergunta -> 3 easy, 3 medium, 3 hard

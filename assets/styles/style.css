@@ -6,7 +6,6 @@
     box-sizing: border-box;
 }
 
-
 .hide {
     display: none;
 }
@@ -23,3 +22,23 @@ h1 {
     font-size: 25px;
 }
 
+.next-btn, .play-btn, .reset-btn {
+    background-color: rgb(51, 2, 87);
+    color: white;
+    font-weight: bold;
+    margin: 10px;
+    padding: 2px 4px;
+}
+
+.progress-bar {
+    background-color: violet;
+    width: 99px;
+    height: 19px;
+
+}
+
+.progress-bar-border {
+    border: 2px solid red;
+    width: 100px;
+    height: 20px;
+}

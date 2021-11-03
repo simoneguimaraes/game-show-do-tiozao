@@ -13,7 +13,7 @@ const questions = [
             'Asterístico, beneficiente, metereologia, entretido',
             'Asterístico, beneficiente, meteorologia, entertido'
         ],
-        correctAnswer: 'Asterisco, beneficente, meteorologia, entretido',
+        correctAnswer: 'Asterisco, beneficente, meteorologia, entretido'
     },
     {
         question: 'Qual o número mínimo de jogadores numa partida de futebol?',
@@ -25,7 +25,7 @@ const questions = [
             '7',
             '10'
         ],
-        correctAnswer: '7',
+        correctAnswer: '7'
     },
     {
         question: 'De quem é a famosa frase “Penso, logo existo"?',
@@ -37,49 +37,35 @@ const questions = [
             'Descartes',
             'Sócrates'
         ],
-        correctAnswer: 'Descartes',
-    }
-]
-
-/*
-    {
-        question: 'De quem é a famosa frase “Penso, logo existo"?',
-        level: 'easy',
-        category: 'literatura',
-        answers: {
-          a: 'Platão',
-          b: 'Galileu Galilei',
-          c: 'Descartes',
-          d: 'Sócrates',
-        },
-        correctAnswer: 'c',
+        correctAnswer: 'Descartes'
     },
     {
         question: 'Qual o nome do presidente do Brasil que ficou conhecido como Jango?',
         level: 'easy',
         category: 'historia',
-        answers: {
-          a: 'João Goulart',
-          b: 'João Figueiredo',
-          c: 'Getúlio Vargas',
-          d: 'Jânio Quadros',
-        },
-        correctAnswer: 'a',
+        answers: [
+            'João Goulart',
+            'João Figueiredo',
+            'Getúlio Vargas',
+            'Jânio Quadros'
+        ],
+        correctAnswer: 'João Goulart'
+    },
+    {
+        question: 'Quais o menor e o maior país do mundo?',
+        level: 'medium',
+        category: 'geografia',
+        answers: [
+            'Mônaco e Canadá',
+            'Malta e Estados Unidos',
+            'Nauru e China',
+            'Vaticano e Rússia'
+        ],
+        correctAnswer: 'Vaticano e Rússia'
     }
-];
+]
 
-/* 
-
-{ 
-    category: 'geografia'
-    level: 'medium'
-    question: 'Quais o menor e o maior país do mundo?'
-    answer-a: 'Mônaco e Canadá'
-    answerB: 'Malta e Estados Unidos'
-    answerC: 'Nauru e China'
-    answerD: 'Vaticano e Rússia'
-A: answerD
-}
+/*
 { 
     category: 'atualidade'
     level: 'medium'

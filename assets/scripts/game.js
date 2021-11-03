@@ -79,7 +79,7 @@ function setNextQuestion() {
     return resetGame();
   }
   
-  seconds = 15;
+  seconds = 30;
   questionElement.innerHTML = currentQuestion.question;
   for (let i = 0; i < answerButtonsElement.children.length; i++) {
 	  if(answerButtonsElement.children[i].classList.contains("correct")) {
@@ -175,12 +175,12 @@ function updateWrongAnsCounter() {
 
 
 //ISSUES
-//se o tempo acabar após 3 vidas, acaba o jogo
-// tirar as perguntas do random e nao repetir a pergunta
+//ele está repetindo perguntas
+//colocar mais perguntas para testar
+//colocar o botao "proxima pergunta" apenas depois que a pessoa responder
 
 
 //MELHORAR
-//colocar o botao "proxima pergunta" apenas depois que a pessoa responder
+
 //se a pessoa nao clicar em "proxima pergunta", ir automaticamente em 5 segundos
 // ao inves de "Jogar De Novo" ir para a pagina inicial, ir para a primeira pergunta
-// aumentar o nível da pergunta -> 3 easy, 3 medium, 3 hard

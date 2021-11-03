@@ -1,44 +1,246 @@
-.body {
-    margin: 0;
-}
-
 * {
     box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+    margin: 0px;
 }
 
+.home-container {
+    background-color: #C0D1E9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+/*images*/
+.home-container img {
+    width: 80%;
+    padding-top: 20px;
+    padding-bottom: 25px;
+    border-radius: 10px;
+}
+
+/*title*/
+h1 {
+    font-size: 25px;
+    font-weight: 300;
+    margin-top: 50px;
+}
+
+/*buttons*/
+.play-btn {
+    padding: 10px 73px;
+    background-color: #FFAA2F;
+    border: none;
+    border-radius: 10px;
+    box-shadow: inset 0 0 1em rgb(255, 251, 0), 0 0 1em grey;
+}
+
+
+.points {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 10px;
+    color: indigo;
+}
+
+.points i {
+    color: #D391FF;
+}
+
+.container {
+    margin: 10px 30px;
+
+}
+
+.text-question {
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.answer-buttons {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.answer-buttons button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 14px;
+    text-align: left;
+    background-color: #FFF3B6;
+    border: none;
+    border-radius: 15px;
+    box-shadow: inset 0 0 1em #fdd81e, 0 0 1em grey;
+}
+
+/*answers*/
 .hide {
     display: none;
 }
 
 .correct {
     background-color: greenyellow;
+    border: none;
+    border-radius: 15px;
+    box-shadow: inset 0 0 1em rgb(117, 204, 35), 0 0 1em grey;
 }
 
 .wrong {
-    background-color: red;
+    background-color: rgb(253, 79, 79);
+    border: none;
+    border-radius: 15px;
+    box-shadow: inset 0 0 1em rgb(134, 37, 37), 0 0 1em grey;
 }
 
-h1 {
-    font-size: 25px;
+.next-btn{
+    background-color: #FFAA2F;
+    border: none;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 15px;
+    box-shadow: inset 0 0 1em rgb(255, 251, 0), 0 0 1em grey;
 }
 
-.next-btn, .play-btn, .reset-btn {
-    background-color: rgb(51, 2, 87);
-    color: white;
-    font-weight: bold;
-    margin: 10px;
-    padding: 2px 4px;
-}
-
+/*progress bar*/
 .progress-bar {
     background-color: violet;
     width: 99px;
     height: 19px;
-
+    position: absolute;
+    top: 0;
+    width: 100%;
+    border: black
 }
 
 .progress-bar-border {
     border: 2px solid red;
     width: 100px;
     height: 20px;
+}
+
+/*media query*/
+@media screen and (min-width: 600px) {
+    .home-container {
+        background-color: #C0D1E9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+    
+    /*images*/
+    .home-container img {
+        width: 60%;
+        padding-top: 20px;
+        padding-bottom: 25px;
+        border-radius: 10px;
+    }
+    
+    /*title*/
+    h1 {
+        font-size: 25px;
+        font-weight: 300;
+        margin-top: 50px;
+    }
+    
+    /*buttons*/
+    .play-btn {
+        padding: 10px 73px;
+        background-color: #FFAA2F;
+        border: none;
+        border-radius: 10px;
+        box-shadow: inset 0 0 1em rgb(255, 251, 0), 0 0 1em grey;
+    }
+    
+    
+    .points {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        padding: 10px;
+        color: indigo;
+    }
+    
+    .points i {
+        color: #D391FF;
+    }
+    
+    .container {
+        margin: 10px 30px;
+    
+    }
+    
+    .text-question {
+        font-size: 20px;
+        padding-bottom: 5px;
+    }
+    
+    .answer-buttons {
+        display: flex;
+        flex-direction: column;
+        
+    }
+    
+    .answer-buttons button {
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 14px;
+        text-align: left;
+        background-color: #FFF3B6;
+        border: none;
+        border-radius: 15px;
+        box-shadow: inset 0 0 1em #fdd81e, 0 0 1em grey;
+    }
+    
+    /*answers*/
+    .hide {
+        display: none;
+    }
+    
+    .correct {
+        background-color: greenyellow;
+        border: none;
+        border-radius: 15px;
+        box-shadow: inset 0 0 1em rgb(117, 204, 35), 0 0 1em grey;
+    }
+    
+    .wrong {
+        background-color: rgb(253, 79, 79);
+        border: none;
+        border-radius: 15px;
+        box-shadow: inset 0 0 1em rgb(134, 37, 37), 0 0 1em grey;
+    }
+    
+    .next-btn{
+        background-color: #FFAA2F;
+        border: none;
+        border-radius: 10px;
+        margin: 15px;
+        padding: 15px;
+        box-shadow: inset 0 0 1em rgb(255, 251, 0), 0 0 1em grey;
+    }
+    
+    /*progress bar*/
+    .progress-bar {
+        background-color: violet;
+        width: 99px;
+        height: 19px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        border: black
+    }
+    
+    .progress-bar-border {
+        border: 2px solid red;
+        width: 100px;
+        height: 20px;
+    }
 }

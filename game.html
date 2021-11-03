@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Show do Tiozão</title>
-    <link rel="stylesheet" href="./assets/styles/style.css">
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+  </head>
+  <body>
+    <div id="maincontent">
+      <h1>Show do Tiozão</h1>
 
-</head>
-<body>
-        <h1>Show do Tiozão</h1>
-        
-        <div class="container">
-            <div id="question-container" class="hide">
-              <div id="question">Pergunta</div>
-              <div id="answer-buttons">
-                <button class="btn">Resposta A</button>
-                <button class="btn">Resposta B</button>
-                <button class="btn">Resposta C</button>
-                <button class="btn">Resposta D</button>
-              </div>
-            </div>
-            <div class="controls">
-                <button id="play-btn" class="play-btn">Play</button>
-                <button id="confirm-btn" class="confirm-btn hide">Confirma</button>
-            </div>
+      <div class="container">
+        <div id="question-container" class="hide">
+          <div id="question">Pergunta</div>
+          <div id="answer-buttons">
+            <button class="btn">Resposta A</button>
+            <button class="btn">Resposta B</button>
+            <button class="btn">Resposta C</button>
+            <button class="btn">Resposta D</button>
           </div>
+        </div>
+        <div class="controls">
+          <button id="play-btn" class="play-btn">Play</button>
+          <button id="next-btn" class="next-btn hide">Próxima Pergunta</button>
+        </div>
+      </div>
+    </div>
+    <div id="loserGame" class="hide">
+        <h1>Que pena. Você perdeu! Tente de novo.</h1>
+        <img src="#" alt="#"/>
+        <button id="reset-btn" type="button">Tente de novo</button>
+    </div>
     <script src="./assets/scripts/database.js"></script>
     <script src="./assets/scripts/game.js"></script>
-</body>
+  </body>
 </html>

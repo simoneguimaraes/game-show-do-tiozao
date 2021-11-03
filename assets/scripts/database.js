@@ -13,34 +13,35 @@ const questions = [
             'Asterístico, beneficiente, metereologia, entretido',
             'Asterístico, beneficiente, meteorologia, entertido'
         ],
-        correctAnswer: 0,
-    }
-]
-/*
+        correctAnswer: 'Asterisco, beneficente, meteorologia, entretido',
+    },
     {
         question: 'Qual o número mínimo de jogadores numa partida de futebol?',
         level: 'easy',
         category: 'atualidade',
-        answers: {
-          a: '8',
-          b: '9',
-          c: '7',
-          d: '10',
-        },
-        correctAnswer: 'c',
+        answers: [
+            '8',
+            '9',
+            '7',
+            '10'
+        ],
+        correctAnswer: '7',
     },
     {
         question: 'De quem é a famosa frase “Penso, logo existo"?',
         level: 'easy',
         category: 'literatura',
-        answers: {
-          a: 'Platão',
-          b: 'Galileu Galilei',
-          c: 'Descartes',
-          d: 'Sócrates',
-        },
-        correctAnswer: 'c',
-    },
+        answers: [
+            'Platão',
+            'Galileu Galilei',
+            'Descartes',
+            'Sócrates'
+        ],
+        correctAnswer: 'Descartes',
+    }
+]
+
+/*
     {
         question: 'De quem é a famosa frase “Penso, logo existo"?',
         level: 'easy',

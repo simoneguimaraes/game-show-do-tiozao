@@ -164,9 +164,9 @@ function timerCountdown() {
 
 //3 respostas erradas antes de perder o jogo
 function wrongAnswer() {
-
   wrongAnswerCounterElement.innerHTML = (Number(wrongAnswerCounterElement.innerText) - 1)
-  if(Number(wrongAnswerCounterElement.innerText) === 0) {
+  changeIconAnswersWrong();
+  if((wrongAnswerCounterElement.innerText) === ``) {
     setTimeout(resetGame, 2000);
   }
 }
@@ -175,14 +175,28 @@ function updateWrongAnsCounter() {
   wrongAnswerCounterElement--
 }
 
+function changeIconAnswersWrong() {
+  if(Number(wrongAnswerCounterElement.innerText) === 3) {
+    wrongAnswerCounterElement.innerHTML = `<i class="fas fa-heart"> <i class="fas fa-heart"> <i class="fas fa-heart">`
+  } else if (Number(wrongAnswerCounterElement.innerText) === 2) {
+    wrongAnswerCounterElement.innerHTML = `<i class="fas fa-heart"> <i class="fas fa-heart">`
+  } else if (Number(wrongAnswerCounterElement.innerText) === 1) {
+    wrongAnswerCounterElement.innerHTML = `<i class="fas fa-heart">`
+  } else {
+    wrongAnswerCounterElement.innerHTML = ``
+  }
+} 
+
 
 //ISSUES
+//icone de vidas nao está funcionando
 //o nível de dificuldade nao está funcionando
 //mudar a cor do progress bar de acordo com o nível
-//colocar icones * * * ao invés de colocar 3 vidas
-//colocar audio
+// o que acontece quando a pessoa passa de nivel
+// o que acontece quando ela ganha o jogo
 
 //MELHORAR
+//colocar audio
 //colocar aba com instrucoes
 // ao inves de "Jogar De Novo" ir para a pagina inicial, ir para a primeira pergunta
 //se a pessoa nao clicar em "proxima pergunta", ir automaticamente em 5 segundos

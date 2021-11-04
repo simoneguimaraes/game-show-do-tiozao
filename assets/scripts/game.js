@@ -12,7 +12,7 @@ const wrongAnswerElement = document.getElementById("wrongAnswer")
 const wrongAnswerCounterElement = document.getElementById("wrongAnswerCounter")
 const progressBarBorder = document.getElementById("progress-bar-border")
 const progressBarElement = document.getElementById("progress-bar")
-
+const gameTitle = document.getElementById("game-title")
 
 let shuffledQuestions, currentQuestionIndex, currentQuestion, questionLevelIndex, isCorrect;
 let seconds;
@@ -20,6 +20,7 @@ let seconds;
 //começar o jogo
 playButton.addEventListener("click", startGame);
 progressBarBorder.classList.add("hide");
+
 //quando começar o jogo, esconder o botão play e mostrar as perguntas
 function startGame() {
   questionLevelIndex = 1;
@@ -32,10 +33,14 @@ function startGame() {
   updateTimerElement();
   timerCountdown();
   progressBarBorder.classList.remove("hide");
+  gameTitle.classList.add("hide");
+  nextButton.classList.add("hide");
 }
 
 //toda vez que eu clicar em confirma, ele vai para a próxima pergunta
 nextButton.addEventListener("click", () => {
+  questions.splice(questions.indexOf(currentQuestion), 1)
+  console.log(questions)
   //como sortear aleatoriamente e jogar as que ja foram sorteadas para o fim da array
   if(questionLevelIndex < 5) {
     const filterLevelIndexEasy = questions.filter((element) => element.level === 'fácil')
@@ -75,6 +80,7 @@ nextButton.addEventListener("click", () => {
 
 // a cada nova pergunta, ele vai buscar o array de respostas
 function setNextQuestion() {
+  
   if (questionLevelIndex === 10) {
     return resetGame();
   }
@@ -102,9 +108,9 @@ function setNextQuestion() {
 
 }
 
-
 //funcionalidades de resposta certa e errada
 answerButtonsElement.addEventListener("click", (event) => {
+  nextButton.classList.remove("hide");
   const chosenAnswer = event.target;
   if(chosenAnswer.classList.contains('btn')) {
     if (chosenAnswer.innerText === currentQuestion.correctAnswer) {
@@ -163,6 +169,7 @@ function timerCountdown() {
 
 //3 respostas erradas antes de perder o jogo
 function wrongAnswer() {
+  
   wrongAnswerCounterElement.innerHTML = (Number(wrongAnswerCounterElement.innerText) - 1)
   if(Number(wrongAnswerCounterElement.innerText) === 0) {
     setTimeout(resetGame, 2000);
@@ -175,12 +182,12 @@ function updateWrongAnsCounter() {
 
 
 //ISSUES
-//ele está repetindo perguntas
-//colocar mais perguntas para testar
-//colocar o botao "proxima pergunta" apenas depois que a pessoa responder
-
+//o nível de dificuldade nao está funcionando
+//mudar a cor do progress bar de acordo com o nível
+//colocar icones * * * ao invés de colocar 3 vidas
+//colocar audio
 
 //MELHORAR
-
-//se a pessoa nao clicar em "proxima pergunta", ir automaticamente em 5 segundos
+//colocar aba com instrucoes
 // ao inves de "Jogar De Novo" ir para a pagina inicial, ir para a primeira pergunta
+//se a pessoa nao clicar em "proxima pergunta", ir automaticamente em 5 segundos

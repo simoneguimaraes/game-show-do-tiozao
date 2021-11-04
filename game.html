@@ -6,21 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Show do Tiozão</title>
     <link rel="stylesheet" href="./assets/styles/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
+
   <body>
-    
-     <div id="maincontent" class="home-container">
-        <h1>Show do Tiozão</h1>
-        <img src="./assets/imagens/home.png" alt="logo do game" id="logo"/>
+    <div id="maincontent"  class="home-container" >
+      <div class="image-hero">
+        <h1 id="game-title">Show do Tiozão</h1>
+        <img src="./assets/imagens/home.png" alt="logo do game" id="logo" />
         <button id="play-btn" class="play-btn">Quero Jogar!</button>
-      <div class="points">
+      </div>
+      <div class="points" id="points">
         <div id="timer" class="timer hide">
           <span id="seconds">00</span>
         </div>
@@ -28,7 +38,6 @@
           <i class="fas fa-heart"></i> <span id="wrongAnswerCounter">3</span>/3
         </div>
       </div>
-
       <div class="container">
         <div id="question-container" class="hide">
           <div id="question" class="text-question">Pergunta</div>
@@ -40,19 +49,18 @@
           </div>
         </div>
       </div>
+      <button id="next-btn" class="next-btn hide">Próxima Pergunta</button>
+    </div>
 
-        <button id="next-btn" class="next-btn hide">Próxima Pergunta</button>
-      
+    <div id="loserGame" class="losergame-container hide">
+      <h1>Que pena. Você perdeu!</h1>
+      <!-- <img src="./assets/imagens/home.png" alt="logo do game" id="logo"/> -->
+      <button id="reset-btn" class="reset-btn" type="button">
+        Quero Jogar de Novo!
+      </button>
     </div>
-    
-    <div id="loserGame" class="hide">
-      <h1>Que pena. Você perdeu! Tente de novo.</h1>
-      <img src="#" alt="#" />
-      <button id="reset-btn" class="reset-btn" type="button">Jogar de Novo!</button>
-    </div>
-    <div id="progress-bar-border" class="progress-bar-border" >
-      <div id="progress-bar" class="progress-bar">
-      </div>
+    <div id="progress-bar-border" class="progress-bar-border">
+      <div id="progress-bar" class="progress-bar"></div>
     </div>
     <script src="./assets/scripts/database.js"></script>
     <script src="./assets/scripts/game.js"></script>

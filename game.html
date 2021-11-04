@@ -27,14 +27,22 @@
   </head>
 
   <body>
-    <div id="maincontent"  class="home-container" >
+    <div id="maincontent"  class="home-container">
       <div class="image-game">
         <h1 id="game-title">Show do Tiozão</h1>
         <img src="./assets/imagens/logo2.png" alt="logo do game" id="logo" />
+        <ul id="instructions" class="instructions hide">
+          <li><i class="fas fa-clock"></i>Você terá <strong>30 segundos</strong> para responder cada pergunta.</li>
+          <li><i class="fas fa-heart"></i>Você terá direito a errar a resposta <strong>3 vezes</strong>.</li> 
+          <li>Você passará pelos níveis fácil, médio e difícil.</li>
+          <li>Depois de 4 respostas corretas, você mudará de nível.</li>
+          <li>Boa sorte!</li>
+        </ul>
+        <button id="instruction-btn" class="instruction-btn">LER AS INSTRUÇÕES</button>
         <button id="play-btn" class="play-btn">QUERO JOGAR!</button>
       </div>
-      <div class="points" id="points">
 
+      <div id="points" class="points hide" >
         <div id="timer" class="timer hide">
           <i class="fas fa-heart"></i> 
           <!-- <span id="seconds">00</span> -->
@@ -43,8 +51,8 @@
         <div id="wrongAnswer" class="wrongAnswer hide">
           <span id="wrongAnswerCounter">3</span>
         </div>
-
       </div>
+
       <div class="container">
         <div id="question-container" class="hide">
           <div id="question" class="text-question">Pergunta</div>
@@ -59,6 +67,9 @@
       <button id="next-btn" class="next-btn hide">PRÓXIMA PERGUNTA</button>
     </div>
 
+    <div id="instruction-container" class="instruction-container hide">
+    </div>
+
     <div id="loserGame" class="losergame-container hide">
       <h1>Que pena. Você perdeu!</h1>
       <!-- <img src="./assets/imagens/home.png" alt="logo do game" id="logo"/> -->
@@ -66,9 +77,11 @@
         JOGAR DE NOVO!
       </button>
     </div>
+
     <div id="progress-bar-border" class="progress-bar-border">
       <div id="progress-bar" class="progress-bar"></div>
     </div>
+
     <script src="./assets/scripts/database.js"></script>
     <script src="./assets/scripts/game.js"></script>
   </body>

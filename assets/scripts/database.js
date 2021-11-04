@@ -109,7 +109,7 @@ const questions = [
         correctAnswer: 'Pico da Neblina'
     },
     {
-        question: 'Quem pintou "Guernica"?',
+        question: 'Quem foi o pintor da obra "Guernica"?',
         level: 'médio',
         category: 'historia',
         answers: [

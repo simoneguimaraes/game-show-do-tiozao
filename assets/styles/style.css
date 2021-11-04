@@ -5,7 +5,7 @@
 }
 
 .home-container {
-    background-color: #C0D1E9;
+    background-color: #a9ccfd;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,8 +20,18 @@
     margin: 0;
 }
 
+.instruction-container {
+    background-color: #a9ccfd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    height: 100vh;
+}
+
 .losergame-container {
-    background-color: #C0D1E9;
+    background-color: #a9ccfd;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,7 +71,7 @@ h1 {
 }
 
 .points i {
-    color: #D391FF;
+    color: #cf851e;
 }
 
 
@@ -70,8 +80,18 @@ h1 {
     padding: 15px 50px;
     background-color: #FFAA2F;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: inset 0 0 1em #cf851e, 0 0 1em grey;
+    font-family: 'Titan One', cursive;
+}
+
+.instruction-btn {
+    padding: 15px 50px;
+    background-color: #D391FF;
+    border: none;
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 1em #c77afa, 0 0 1em grey;
     font-family: 'Titan One', cursive;
 }
 
@@ -79,7 +99,7 @@ h1 {
     padding: 15px 50px;
     background-color: #D391FF;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: inset 0 0 1em #c77afa, 0 0 1em grey;
     margin: 30px 0 0 0;
     font-family: 'Titan One', cursive;
@@ -137,7 +157,7 @@ h1 {
 
 /*progress bar*/
 .progress-bar {
-    background-color: #cf851e;
+    background-color: #D391FF;
     width: 99px;
     height: 19px;
     position: absolute;

@@ -7,12 +7,14 @@ const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const maincontent = document.getElementById("maincontent")
 const loserGame = document.getElementById("loserGame")
-const timerElement = document.getElementById("timer")
 const wrongAnswerElement = document.getElementById("wrongAnswer")
 const wrongAnswerCounterElement = document.getElementById("wrongAnswerCounter")
 const progressBarBorder = document.getElementById("progress-bar-border")
 const progressBarElement = document.getElementById("progress-bar")
 const gameTitle = document.getElementById("game-title")
+const timerElement = document.getElementById("timer")
+
+
 
 let shuffledQuestions, currentQuestionIndex, currentQuestion, questionLevelIndex, isCorrect;
 let seconds;
@@ -39,8 +41,9 @@ function startGame() {
 
 //toda vez que eu clicar em confirma, ele vai para a próxima pergunta
 nextButton.addEventListener("click", () => {
+  //para nao repetir, colocar as perguntas que ja foram em uma array nova
   questions.splice(questions.indexOf(currentQuestion), 1)
-  console.log(questions)
+
   //como sortear aleatoriamente e jogar as que ja foram sorteadas para o fim da array
   if(questionLevelIndex < 5) {
     const filterLevelIndexEasy = questions.filter((element) => element.level === 'fácil')
@@ -66,21 +69,12 @@ nextButton.addEventListener("click", () => {
     filterLevelIndexHard.push(questionEl);
 
   }
-  
-  /*
-  isCorrect = false
-  if (isCorrect === false) {
-
-  } else {
-
-  }
-  */
   setNextQuestion();
+  nextButton.classList.add("hide");
 });
 
 // a cada nova pergunta, ele vai buscar o array de respostas
 function setNextQuestion() {
-  
   if (questionLevelIndex === 10) {
     return resetGame();
   }
@@ -128,10 +122,8 @@ answerButtonsElement.addEventListener("click", (event) => {
       }
       wrongAnswer();
       chosenAnswer.classList.add("wrong");
-        
     }
   } 
-    
 });
 
 //quando voce perde o jogo, aparece mensagem e reload da pagina
@@ -148,13 +140,14 @@ resetButton.addEventListener("click", () => {
 
 
 //timer com 30 segundos para responder
-
 function updateTimerElement() {
-  timerElement.innerHTML = seconds < 10 ? `0${seconds}` : seconds;
+  timerElement.innerHTML = `<i class="fas fa-clock">`
+  timerElement.innerHTML += ` ${seconds}` //< 10 ? `0${seconds}` : seconds;
 }
 
 function timerCountdown() {
   timerElement.classList.remove('hide')
+  
   let myTimer = setInterval(() => {  
     const timeOver = seconds > 0 
     if(timeOver) {
@@ -167,9 +160,11 @@ function timerCountdown() {
   }, 1000)
 }
 
+
+
 //3 respostas erradas antes de perder o jogo
 function wrongAnswer() {
-  
+
   wrongAnswerCounterElement.innerHTML = (Number(wrongAnswerCounterElement.innerText) - 1)
   if(Number(wrongAnswerCounterElement.innerText) === 0) {
     setTimeout(resetGame, 2000);

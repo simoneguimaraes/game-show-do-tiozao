@@ -11,9 +11,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
@@ -25,18 +28,22 @@
 
   <body>
     <div id="maincontent"  class="home-container" >
-      <div class="image-hero">
+      <div class="image-game">
         <h1 id="game-title">Show do Tiozão</h1>
-        <img src="./assets/imagens/home.png" alt="logo do game" id="logo" />
-        <button id="play-btn" class="play-btn">Quero Jogar!</button>
+        <img src="./assets/imagens/logo2.png" alt="logo do game" id="logo" />
+        <button id="play-btn" class="play-btn">QUERO JOGAR!</button>
       </div>
       <div class="points" id="points">
+
         <div id="timer" class="timer hide">
-          <span id="seconds">00</span>
+          <i class="fas fa-heart"></i> 
+          <!-- <span id="seconds">00</span> -->
         </div>
+    
         <div id="wrongAnswer" class="wrongAnswer hide">
           <i class="fas fa-heart"></i> <span id="wrongAnswerCounter">3</span>/3
         </div>
+
       </div>
       <div class="container">
         <div id="question-container" class="hide">
@@ -49,14 +56,14 @@
           </div>
         </div>
       </div>
-      <button id="next-btn" class="next-btn hide">Próxima Pergunta</button>
+      <button id="next-btn" class="next-btn hide">PRÓXIMA PERGUNTA</button>
     </div>
 
     <div id="loserGame" class="losergame-container hide">
       <h1>Que pena. Você perdeu!</h1>
       <!-- <img src="./assets/imagens/home.png" alt="logo do game" id="logo"/> -->
       <button id="reset-btn" class="reset-btn" type="button">
-        Quero Jogar de Novo!
+        JOGAR DE NOVO!
       </button>
     </div>
     <div id="progress-bar-border" class="progress-bar-border">

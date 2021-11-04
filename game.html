@@ -15,6 +15,9 @@
       rel="stylesheet"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
     <link
@@ -32,10 +35,9 @@
         <h1 id="game-title">Show do Tiozão</h1>
         <img src="./assets/imagens/logo2.png" alt="logo do game" id="logo" />
         <ul id="instructions" class="instructions hide">
-          <li><i class="fas fa-clock"></i>Você terá <strong>30 segundos</strong> para responder cada pergunta.</li>
-          <li><i class="fas fa-heart"></i>Você terá direito a errar a resposta <strong>3 vezes</strong>.</li> 
-          <li>Você passará pelos níveis fácil, médio e difícil.</li>
-          <li>Depois de 4 respostas corretas, você mudará de nível.</li>
+          <li>Olá! O jogo possui <strong>12 perguntas</strong> no total.</li>
+          <li><i class="fas fa-clock"></i> Você terá <strong>30 segundos</strong> para responder cada pergunta.</li>
+          <li><i class="fas fa-heart"></i> Você terá direito a <strong>errar 3 vezes</strong>.</li> 
           <li>Boa sorte!</li>
         </ul>
         <button id="instruction-btn" class="instruction-btn">LER AS INSTRUÇÕES</button>
@@ -72,6 +74,13 @@
 
     <div id="loserGame" class="losergame-container hide">
       <h1>Que pena. Você perdeu!</h1>
+      <!-- <img src="./assets/imagens/home.png" alt="logo do game" id="logo"/> -->
+      <button id="reset-btn" class="reset-btn" type="button">
+        JOGAR DE NOVO!
+      </button>
+    </div>
+    <div id="winnerGame" class="winner-container hide">
+      <h1>Parabéns!! Você ganhou!</h1>
       <!-- <img src="./assets/imagens/home.png" alt="logo do game" id="logo"/> -->
       <button id="reset-btn" class="reset-btn" type="button">
         JOGAR DE NOVO!

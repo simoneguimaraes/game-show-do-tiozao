@@ -7,6 +7,7 @@ const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const maincontent = document.getElementById("maincontent")
 const loserGame = document.getElementById("loserGame")
+const winnerGame = document.getElementById("winnerGame")
 const wrongAnswerElement = document.getElementById("wrongAnswer")
 const wrongAnswerCounterElement = document.getElementById("wrongAnswerCounter")
 const progressBarBorder = document.getElementById("progress-bar-border")
@@ -19,11 +20,13 @@ const instructions = document.getElementById("instructions")
 const gameTitleElement = document.getElementById("game-title")
 const points = document.getElementById("points")
 
-
+/*variáveis de escopo global*/
 let shuffledQuestions, currentQuestionIndex, currentQuestion, questionLevelIndex, isCorrect;
 let seconds;
+let livesCounter = 3;
+let chosenAnswer;
 
-//página inicial
+/*página inicial*/
 playButton.addEventListener("click", startGame);
 instructionButtonElement.addEventListener("click", gameInstructions);
 progressBarBorder.classList.add("hide");
@@ -45,19 +48,18 @@ function startGame() {
   nextButton.classList.add("hide");
   instructionButtonElement.classList.add("hide");
   points.classList.remove("hide");
+  if(livesCounter === 3) {
+    wrongAnswerElement.innerHTML = `<i class="fas fa-heart"> <i class="fas fa-heart"> <i class="fas fa-heart">`
+  }
 }
 
 //quando clicar em instrucoes, mostrar um texto
 function gameInstructions() {
-  
   gameTitleElement.innerHTML = `Instruções`;
   instructionButtonElement.classList.add("hide");
   instructionElement.classList.remove("hide");
   logoElement.classList.add("hide");
   instructions.classList.remove("hide")
-
-  //--->inserir texto
-  
 }
 
 
@@ -74,7 +76,6 @@ nextButton.addEventListener("click", () => {
     const questionEl = filterLevelIndexEasy.slice(currentQuestionIndex, 1);
     filterLevelIndexEasy.push(questionEl);
 
-
   } else if (questionLevelIndex > 4 && questionLevelIndex < 9) {
     const filterLevelIndexMedium = questions.filter((element) => element.level === 'médio')
     currentQuestionIndex = Math.floor(Math.random() * (Math.floor(filterLevelIndexMedium.length - (filterLevelIndexMedium.length/2))))
@@ -82,14 +83,12 @@ nextButton.addEventListener("click", () => {
     const questionEl = filterLevelIndexMedium.slice(currentQuestionIndex, 1);
     filterLevelIndexMedium.push(questionEl);
 
-
   } else {
     const filterLevelIndexHard = questions.filter((element) => element.level === 'difícil')
     currentQuestionIndex = Math.floor(Math.random() * (Math.floor(filterLevelIndexHard.length - (filterLevelIndexHard.length/2))))
     currentQuestion = filterLevelIndexHard[currentQuestionIndex];
     const questionEl = filterLevelIndexHard.slice(currentQuestionIndex, 1);
     filterLevelIndexHard.push(questionEl);
-
   }
   setNextQuestion();
   nextButton.classList.add("hide");
@@ -97,10 +96,10 @@ nextButton.addEventListener("click", () => {
 
 // a cada nova pergunta, ele vai buscar o array de respostas
 function setNextQuestion() {
-  if (questionLevelIndex === 10) {
-    return resetGame();
+  //se o jogo estiver no index 13, ele acaba
+  if (questionLevelIndex === 13) {
+    return winGame();
   }
-  
   seconds = 30;
   questionElement.innerHTML = currentQuestion.question;
   for (let i = 0; i < answerButtonsElement.children.length; i++) {
@@ -119,15 +118,13 @@ function setNextQuestion() {
     answerButtonsElement.children[i].classList.remove("wrong")
   }
   questionLevelIndex++;
-  
   progressBarElement.style.width = `${(questionLevelIndex/12) * 99}px`
-
 }
 
 //funcionalidades de resposta certa e errada
 answerButtonsElement.addEventListener("click", (event) => {
   nextButton.classList.remove("hide");
-  const chosenAnswer = event.target;
+  chosenAnswer = event.target;
   if(chosenAnswer.classList.contains('btn')) {
     if (chosenAnswer.innerText === currentQuestion.correctAnswer) {
       chosenAnswer.classList.add("correct");
@@ -142,24 +139,11 @@ answerButtonsElement.addEventListener("click", (event) => {
           answerButtonsElement.children[i].disabled = true;
         }
       }
-      wrongAnswer();
       chosenAnswer.classList.add("wrong");
+      changeIconAnswersWrong();
     }
   } 
 });
-
-//quando voce perde o jogo, aparece mensagem e reload da pagina
-function resetGame() {
-  loserGame.classList.remove("hide")
-	maincontent.classList.add("hide")
-  timerElement.classList.add("hide")
-  progressBarBorder.classList.add("hide");
-}
-
-resetButton.addEventListener("click", () => {
-	document.location.reload(true);
-});
-
 
 //timer com 30 segundos para responder
 function updateTimerElement() {
@@ -176,57 +160,60 @@ function timerCountdown() {
       seconds--;
     } else {
       clearInterval(myTimer);
-      wrongAnswer();
+      changeIconAnswersWrong();
     }
     updateTimerElement()
   }, 1000)
 }
 
-
-
 //3 respostas erradas antes de perder o jogo
-function wrongAnswer() {
-  wrongAnswerCounterElement.innerHTML = (Number(wrongAnswerCounterElement.innerText) - 1)
-  //changeIconAnswersWrong();
-  if((wrongAnswerCounterElement.innerText) === ``) {
+function changeIconAnswersWrong() {
+  
+  if (chosenAnswer.innerText !== currentQuestion.correctAnswer) {
+    livesCounter--
+  } 
+  
+  if(livesCounter === 2) {
+    wrongAnswerElement.innerHTML = `<i class="fas fa-heart"> <i class="fas fa-heart">`
+  } else if (livesCounter === 1) {
+    wrongAnswerElement.innerHTML = `<i class="fas fa-heart">`
+  } else {
+    wrongAnswerElement.innerHTML = ``
     setTimeout(resetGame, 2000);
   }
 }
 
-function updateWrongAnsCounter() {
-  wrongAnswerCounterElement--
+//quando voce perde o jogo, aparece mensagem e reload da pagina
+function resetGame() {
+  loserGame.classList.remove("hide")
+	maincontent.classList.add("hide")
+  timerElement.classList.add("hide")
+  progressBarBorder.classList.add("hide");
+}
+//
+resetButton.addEventListener("click", () => {
+  document.location.reload(true);
+});
+
+//quando você ganha o jogo
+function winGame() {
+  winnerGame.classList.remove("hide")
+	maincontent.classList.add("hide")
+  timerElement.classList.add("hide")
+  progressBarBorder.classList.add("hide");
 }
 
-//--->mudar o número das 3 vidas para icones
-
-function changeIconAnswersWrong() {
-  if(Number(wrongAnswerCounterElement.innerText) === 3) {
-    wrongAnswerCounterElement.innerHTML = `<i class="fas fa-heart"> <i class="fas fa-heart"> <i class="fas fa-heart">`
-  } else if (Number(wrongAnswerCounterElement.innerText) === 2) {
-    wrongAnswerCounterElement.innerHTML = `<i class="fas fa-heart"> <i class="fas fa-heart">`
-  } else if (Number(wrongAnswerCounterElement.innerText) === 1) {
-    wrongAnswerCounterElement.innerHTML = `<i class="fas fa-heart">`
-  } else {
-    wrongAnswerCounterElement.innerHTML = ``
-  }
-} 
-
-
-
 //ISSUES
-//icone de vidas nao está funcionando
-//ver a questao de como voce perde no jogo
-//o nível de dificuldade nao está funcionando
+//jogar de novo nao esta funcionando no winner game
 //a progress bar não está funcionando
-//colocar o hover no desktop
+//ver a questao de como voce perde no jogo
 
 
-//mudar a cor do progress bar de acordo com o nível
 // o que acontece quando a pessoa passa de nivel
-// o que acontece quando ela ganha o jogo
 
 //MELHORAR
 //colocar audio
-//colocar aba com instrucoes
+//colocar o hover no desktop
+//melhorar CSS da aba com instrucoes
+//mudar a cor do progress bar de acordo com o nível
 // ao inves de "Jogar De Novo" ir para a pagina inicial, ir para a primeira pergunta
-//se a pessoa nao clicar em "proxima pergunta", ir automaticamente em 5 segundos

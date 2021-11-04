@@ -44,10 +44,25 @@
    padding: 30px;
 }
 
+.winner-container {
+    background-color: #a9ccfd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    height: 100vh;
+}
+
+.winner-container h1 {
+   padding: 30px;
+}
+
 /*images*/
 .home-container img {
-    width: 100%;
-    padding-bottom: 25px;
+    width: 96%;
+    border-radius: 20px;
+    padding-bottom: 5px;
 }
 
 /*title*/
@@ -67,11 +82,11 @@ h1 {
     width: 100%;
     padding: 10px;
     margin: 40px 0 20px 0;
-    color: indigo;
+    color: rgb(32, 1, 54);
 }
 
 .points i {
-    color: #cf851e;
+    color: #cf6e1e;
 }
 
 
@@ -82,27 +97,33 @@ h1 {
     border: none;
     border-radius: 15px;
     box-shadow: inset 0 0 1em #cf851e, 0 0 1em grey;
-    font-family: 'Titan One', cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
 .instruction-btn {
     padding: 15px 50px;
-    background-color: #D391FF;
+    background-color: #d494ff;
     border: none;
     margin: 20px;
     border-radius: 15px;
-    box-shadow: inset 0 0 1em #c77afa, 0 0 1em grey;
-    font-family: 'Titan One', cursive;
+    box-shadow: inset 0 0 1em #cb8bf6, 0 0 1em grey;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
 .next-btn{
     padding: 15px 50px;
-    background-color: #D391FF;
+    background-color: #d494ff;
     border: none;
     border-radius: 15px;
-    box-shadow: inset 0 0 1em #c77afa, 0 0 1em grey;
+    box-shadow: inset 0 0 1em #cb8bf6, 0 0 1em grey;
     margin: 30px 0 0 0;
-    font-family: 'Titan One', cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
 .answer-buttons {
@@ -121,10 +142,20 @@ h1 {
     box-shadow: inset 0 0 1em #fadd4d, 0 0 1em grey;
 }
 
-
-
 .container {
     margin: 10px 30px;
+}
+/*instructions*/
+ul li {
+    list-style: none;
+}
+
+ul li .fa-clock {
+    color: #cf6e1e;
+}
+
+ul li .fa-heart {
+    color: rgb(134, 37, 37);
 }
 
 /*questions*/

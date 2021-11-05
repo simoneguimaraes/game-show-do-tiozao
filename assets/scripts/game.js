@@ -19,14 +19,33 @@ const instructionButtonElement = document.getElementById("instruction-btn")
 const instructions = document.getElementById("instructions")
 const gameTitleElement = document.getElementById("game-title")
 const points = document.getElementById("points")
+const audioButton = document.getElementById("audio-btn")
+
 
 /*variáveis de escopo global*/
 let shuffledQuestions, currentQuestionIndex, currentQuestion, questionLevelIndex, isCorrect;
 let seconds;
 let livesCounter = 3;
 let chosenAnswer;
+let musicClick = 0;
+let correctAnswerCounter = 0;
+let timerClock;
+
+
+/*audio inicial*/
+audioButton.addEventListener('click', playBoasVindas)
+boasVindas = new Audio("./assets/audio/boas-vindas.mp3");
+function playBoasVindas() {
+  if (musicClick === 0) {
+    boasVindas.play();
+    musicClick++;
+    console.log(musicClick)
+  }
+  boasVindas.volume = 0.9;
+}
 
 /*página inicial*/
+
 playButton.addEventListener("click", startGame);
 instructionButtonElement.addEventListener("click", gameInstructions);
 progressBarBorder.classList.add("hide");
@@ -47,6 +66,7 @@ function startGame() {
   gameTitle.classList.add("hide");
   nextButton.classList.add("hide");
   instructionButtonElement.classList.add("hide");
+  audioButton.classList.add("hide");
   points.classList.remove("hide");
   if(livesCounter === 3) {
     wrongAnswerElement.innerHTML = `<i class="fas fa-heart"> <i class="fas fa-heart"> <i class="fas fa-heart">`
@@ -60,6 +80,7 @@ function gameInstructions() {
   instructionElement.classList.remove("hide");
   logoElement.classList.add("hide");
   instructions.classList.remove("hide")
+  audioButton.classList.add("hide");
 }
 
 
@@ -96,10 +117,6 @@ nextButton.addEventListener("click", () => {
 
 // a cada nova pergunta, ele vai buscar o array de respostas
 function setNextQuestion() {
-  //se o jogo estiver no index 13, ele acaba
-  if (questionLevelIndex === 13) {
-    return winGame();
-  }
   seconds = 30;
   questionElement.innerHTML = currentQuestion.question;
   for (let i = 0; i < answerButtonsElement.children.length; i++) {
@@ -121,6 +138,8 @@ function setNextQuestion() {
   progressBarElement.style.width = `${(questionLevelIndex/12) * 99}px`
 }
 
+
+
 //funcionalidades de resposta certa e errada
 answerButtonsElement.addEventListener("click", (event) => {
   nextButton.classList.remove("hide");
@@ -128,6 +147,8 @@ answerButtonsElement.addEventListener("click", (event) => {
   if(chosenAnswer.classList.contains('btn')) {
     if (chosenAnswer.innerText === currentQuestion.correctAnswer) {
       chosenAnswer.classList.add("correct");
+      correctAnswerCounter++;
+      winCheck(correctAnswerCounter)
       for (let i = 0; i < answerButtonsElement.children.length; i++) {
         if (answerButtonsElement.children[i] !== chosenAnswer) {
           answerButtonsElement.children[i].disabled = true;
@@ -145,10 +166,18 @@ answerButtonsElement.addEventListener("click", (event) => {
   } 
 });
 
+//contagem vitoria
+function winCheck(counter) {
+  if(counter >= 12) {
+    winGame();
+  }
+}
+
 //timer com 30 segundos para responder
 function updateTimerElement() {
   timerElement.innerHTML = `<i class="fas fa-clock">`
-  timerElement.innerHTML += ` ${seconds}` //< 10 ? `0${seconds}` : seconds;
+  timerElement.innerHTML += ` ${seconds}` 
+  timerClock = timerElement.innerText;
 }
 
 function timerCountdown() {
@@ -168,9 +197,8 @@ function timerCountdown() {
 
 //3 respostas erradas antes de perder o jogo
 function changeIconAnswersWrong() {
-  
-  if (chosenAnswer.innerText !== currentQuestion.correctAnswer) {
-    livesCounter--
+  if (chosenAnswer.innerText !== currentQuestion.correctAnswer || timerClock == " 0") {
+    livesCounter--;
   } 
   
   if(livesCounter === 2) {
@@ -179,7 +207,7 @@ function changeIconAnswersWrong() {
     wrongAnswerElement.innerHTML = `<i class="fas fa-heart">`
   } else {
     wrongAnswerElement.innerHTML = ``
-    setTimeout(resetGame, 2000);
+    setTimeout(resetGame, 1000);
   }
 }
 
@@ -204,16 +232,20 @@ function winGame() {
 }
 
 //ISSUES
-//jogar de novo nao esta funcionando no winner game
-//a progress bar não está funcionando
+// errar = 1 vidas ou tempo
+//3 vezes
 //ver a questao de como voce perde no jogo
 
 
-// o que acontece quando a pessoa passa de nivel
+//jogar de novo nao esta funcionando no winner game
+//a progress bar não está funcionando
+//colocar os audios
+
 
 //MELHORAR
-//colocar audio
 //colocar o hover no desktop
 //melhorar CSS da aba com instrucoes
+//fazer balada de cores quando voce ganha
+// o que acontece quando a pessoa passa de nivel
 //mudar a cor do progress bar de acordo com o nível
 // ao inves de "Jogar De Novo" ir para a pagina inicial, ir para a primeira pergunta

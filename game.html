@@ -35,11 +35,12 @@
         <h1 id="game-title">Show do Tiozão</h1>
         <img src="./assets/imagens/logo2.png" alt="logo do game" id="logo" />
         <ul id="instructions" class="instructions hide">
-          <li>Olá! O jogo possui <strong>12 perguntas</strong> no total.</li>
+          <li>Olá! O jogo tem <strong>12 perguntas</strong>.</li>
           <li><i class="fas fa-clock"></i> Você terá <strong>30 segundos</strong> para responder cada pergunta.</li>
-          <li><i class="fas fa-heart"></i> Você terá direito a <strong>errar 3 vezes</strong>.</li> 
+          <li><i class="fas fa-heart"></i> Você pode <strong>errar 3 vezes</strong>.</li> 
           <li>Boa sorte!</li>
         </ul>
+        <button id="audio-btn" class="audio-btn">ÁUDIO DE BOAS VINDAS</button>
         <button id="instruction-btn" class="instruction-btn">LER AS INSTRUÇÕES</button>
         <button id="play-btn" class="play-btn">QUERO JOGAR!</button>
       </div>
@@ -47,7 +48,6 @@
       <div id="points" class="points hide" >
         <div id="timer" class="timer hide">
           <i class="fas fa-heart"></i> 
-          <!-- <span id="seconds">00</span> -->
         </div>
     
         <div id="wrongAnswer" class="wrongAnswer hide">
@@ -73,15 +73,13 @@
     </div>
 
     <div id="loserGame" class="losergame-container hide">
-      <h1>Que pena. Você perdeu!</h1>
-      <!-- <img src="./assets/imagens/home.png" alt="logo do game" id="logo"/> -->
+      <h1>Que pena, <br>você perdeu!</h1>
       <button id="reset-btn" class="reset-btn" type="button">
         JOGAR DE NOVO!
       </button>
     </div>
     <div id="winnerGame" class="winner-container hide">
       <h1>Parabéns!! Você ganhou!</h1>
-      <!-- <img src="./assets/imagens/home.png" alt="logo do game" id="logo"/> -->
       <button id="reset-btn" class="reset-btn" type="button">
         JOGAR DE NOVO!
       </button>

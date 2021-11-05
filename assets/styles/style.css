@@ -41,7 +41,7 @@
 }
 
 .losergame-container h1 {
-   padding: 30px;
+   padding: 30px 0 0 0;
 }
 
 .winner-container {
@@ -60,18 +60,20 @@
 
 /*images*/
 .home-container img {
-    width: 96%;
+    width: 83%;
     border-radius: 20px;
-    padding-bottom: 5px;
+    margin: 0 0 5px 0;
+    box-shadow: 2px 2px 9px #555;
 }
 
 /*title*/
 h1 {
-    font-size: 25px;
+    font-size: 23px;
     font-family: 'Titan One', cursive;
     font-weight: 500;
-    margin: 50px 0 20px 0;
+    margin: 40px 0 20px 0;
     text-align: center;
+    text-shadow: 2px 2px 8px rgb(214, 214, 214);
 }
 
 /*header*/
@@ -86,17 +88,32 @@ h1 {
 }
 
 .points i {
-    color: #cf6e1e;
+    color:rgb(104, 42, 148)
 }
 
 
 /*buttons*/
 .play-btn, .reset-btn {
-    padding: 15px 50px;
+    padding: 15px 50px; 
     background-color: #FFAA2F;
     border: none;
     border-radius: 15px;
     box-shadow: inset 0 0 1em #cf851e, 0 0 1em grey;
+    box-shadow: 2px 2px 9px #555;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin: 20px 0 0 0;
+}
+
+.audio-btn {
+    padding: 15px 50px;
+    background-color: #ffef94;
+    border: none;
+    margin: 20px 0 0 0;
+    border-radius: 15px;
+    box-shadow: inset 0 0 1em #dfd186, 0 0 1em grey;
+    box-shadow: 2px 2px 9px #555;
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
     letter-spacing: 1px;
@@ -106,9 +123,10 @@ h1 {
     padding: 15px 50px;
     background-color: #d494ff;
     border: none;
-    margin: 20px;
+    margin: 20px 0 0 0;
     border-radius: 15px;
     box-shadow: inset 0 0 1em #cb8bf6, 0 0 1em grey;
+    box-shadow: 2px 2px 9px #555;
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
     letter-spacing: 1px;
@@ -146,17 +164,22 @@ h1 {
     margin: 10px 30px;
 }
 /*instructions*/
+
+ul {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0 25px;
+}
+
 ul li {
-    list-style: none;
+    padding: 5px;
 }
 
-ul li .fa-clock {
-    color: #cf6e1e;
+ul li .fa-clock, .fa-heart {
+    color: rgb(104, 42, 148);
 }
 
-ul li .fa-heart {
-    color: rgb(134, 37, 37);
-}
 
 /*questions*/
 .text-question {
@@ -209,4 +232,5 @@ ul li .fa-heart {
 
 /*media query*/
 @media screen and (min-width: 600px) {
+
 }

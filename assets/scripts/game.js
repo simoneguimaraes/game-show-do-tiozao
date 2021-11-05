@@ -249,25 +249,3 @@ function winGame() {
   audioVencedor = new Audio("./assets/audio/ganhou-jogo.mp3");
   audioVencedor.play();
 }
-
-
-
-
-
-
-//ISSUES
-//jogar de novo nao esta funcionando no winner game
-
-
-
-//a progress bar não está funcionando
-//colocar os audios
-
-
-//MELHORAR
-//colocar o hover no desktop
-//melhorar CSS da aba com instrucoes
-//fazer balada de cores quando voce ganha
-// o que acontece quando a pessoa passa de nivel
-//mudar a cor do progress bar de acordo com o nível
-// ao inves de "Jogar De Novo" ir para a pagina inicial, ir para a primeira pergunta

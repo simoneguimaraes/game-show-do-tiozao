@@ -1,7 +1,7 @@
 const logoElement = document.getElementById("logo");
 const playButton = document.getElementById("play-btn");
 const nextButton = document.getElementById("next-btn");
-const resetButton = document.getElementById("reset-btn");
+const resetButton = document.getElementsByClassName("reset-btn");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
@@ -112,6 +112,7 @@ nextButton.addEventListener("click", () => {
     filterLevelIndexHard.push(questionEl);
   }
   setNextQuestion();
+  timerCountdown();
   nextButton.classList.add("hide");
 });
 
@@ -145,23 +146,29 @@ answerButtonsElement.addEventListener("click", (event) => {
   nextButton.classList.remove("hide");
   chosenAnswer = event.target;
   if(chosenAnswer.classList.contains('btn')) {
-    if (chosenAnswer.innerText === currentQuestion.correctAnswer) {
-      chosenAnswer.classList.add("correct");
-      correctAnswerCounter++;
-      winCheck(correctAnswerCounter)
-      for (let i = 0; i < answerButtonsElement.children.length; i++) {
-        if (answerButtonsElement.children[i] !== chosenAnswer) {
-          answerButtonsElement.children[i].disabled = true;
+    
+    if(seconds === 0 || seconds === null) {
+      return;
+    } else {
+
+      if (chosenAnswer.innerText === currentQuestion.correctAnswer) {
+        chosenAnswer.classList.add("correct");
+        correctAnswerCounter++;
+        winCheck(correctAnswerCounter)
+        for (let i = 0; i < answerButtonsElement.children.length; i++) {
+          if (answerButtonsElement.children[i] !== chosenAnswer) {
+            answerButtonsElement.children[i].disabled = true;
+          }
         }
-      }
-     } else {
-      for (let i = 0; i < answerButtonsElement.children.length; i++) {
-        if (answerButtonsElement.children[i] !== chosenAnswer) {
-          answerButtonsElement.children[i].disabled = true;
+       } else {
+        for (let i = 0; i < answerButtonsElement.children.length; i++) {
+          if (answerButtonsElement.children[i] !== chosenAnswer) {
+            answerButtonsElement.children[i].disabled = true;
+          }
         }
+        chosenAnswer.classList.add("wrong");
+        whenTimeIsOver();
       }
-      chosenAnswer.classList.add("wrong");
-      changeIconAnswersWrong();
     }
   } 
 });
@@ -177,7 +184,7 @@ function winCheck(counter) {
 function updateTimerElement() {
   timerElement.innerHTML = `<i class="fas fa-clock">`
   timerElement.innerHTML += ` ${seconds}` 
-  timerClock = timerElement.innerText;
+  //timerClock = timerElement.innerText;
 }
 
 function timerCountdown() {
@@ -187,28 +194,32 @@ function timerCountdown() {
     const timeOver = seconds > 0 
     if(timeOver) {
       seconds--;
-    } else {
+    } else if (seconds === 0){
       clearInterval(myTimer);
-      changeIconAnswersWrong();
-    }
+      whenTimeIsOver();
+    } 
     updateTimerElement()
   }, 1000)
 }
 
 //3 respostas erradas antes de perder o jogo
-function changeIconAnswersWrong() {
-  if (chosenAnswer.innerText !== currentQuestion.correctAnswer || timerClock == " 0") {
+function whenTimeIsOver() {
+  // if(!chosenAnswer) {
+
+    if(seconds !== 0 || seconds !== null) {
+      seconds = null
+    }
     livesCounter--;
-  } 
-  
-  if(livesCounter === 2) {
-    wrongAnswerElement.innerHTML = `<i class="fas fa-heart"> <i class="fas fa-heart">`
-  } else if (livesCounter === 1) {
-    wrongAnswerElement.innerHTML = `<i class="fas fa-heart">`
-  } else {
-    wrongAnswerElement.innerHTML = ``
-    setTimeout(resetGame, 1000);
-  }
+    nextButton.classList.remove("hide");
+
+    if(livesCounter === 2) {
+      wrongAnswerElement.innerHTML = `<i class="fas fa-heart"> <i class="fas fa-heart">`
+    } else if (livesCounter === 1) {
+      wrongAnswerElement.innerHTML = `<i class="fas fa-heart">`
+    } else {
+      wrongAnswerElement.innerHTML = ``
+      setTimeout(resetGame, 1000);
+    }
 }
 
 //quando voce perde o jogo, aparece mensagem e reload da pagina
@@ -218,10 +229,12 @@ function resetGame() {
   timerElement.classList.add("hide")
   progressBarBorder.classList.add("hide");
 }
-//
-resetButton.addEventListener("click", () => {
-  document.location.reload(true);
-});
+
+Array.from(resetButton).forEach((button) => {
+  button.addEventListener("click", () => {
+    document.location.reload(true);
+  })
+})
 
 //quando você ganha o jogo
 function winGame() {
@@ -229,15 +242,14 @@ function winGame() {
 	maincontent.classList.add("hide")
   timerElement.classList.add("hide")
   progressBarBorder.classList.add("hide");
+
 }
 
 //ISSUES
-// errar = 1 vidas ou tempo
-//3 vezes
-//ver a questao de como voce perde no jogo
-
-
 //jogar de novo nao esta funcionando no winner game
+
+
+
 //a progress bar não está funcionando
 //colocar os audios
 

@@ -224,14 +224,15 @@ function whenTimeIsOver() {
 
 //quando voce perde o jogo, aparece mensagem e reload da pagina
 function resetGame() {
-  loserGame.classList.remove("hide")
-	maincontent.classList.add("hide")
-  timerElement.classList.add("hide")
-  progressBarBorder.classList.add("hide");
-  instructions.classList.add("hide");
   /*audio perdedor*/
   audioPerdedor = new Audio("./assets/audio/perdeu-jogo.mp3");
   audioPerdedor.play();
+ 
+	maincontent.classList.add("hide")
+  timerElement.classList.add("hide")
+  progressBarBorder.classList.add("hide");
+  instructionElement.classList.add("hide");
+  loserGame.classList.remove("hide")
 }
 
 Array.from(resetButton).forEach((button) => {
@@ -246,7 +247,7 @@ function winGame() {
 	maincontent.classList.add("hide")
   timerElement.classList.add("hide")
   progressBarBorder.classList.add("hide");
-  instructions.classList.add("hide");
+  instructionElement.classList.add("hide");
   /*audio vencedor*/
   audioVencedor = new Audio("./assets/audio/ganhou-jogo.mp3");
   audioVencedor.play();

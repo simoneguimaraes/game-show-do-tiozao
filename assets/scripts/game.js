@@ -228,6 +228,7 @@ function resetGame() {
 	maincontent.classList.add("hide")
   timerElement.classList.add("hide")
   progressBarBorder.classList.add("hide");
+  instructions.classList.add("hide");
   /*audio perdedor*/
   audioPerdedor = new Audio("./assets/audio/perdeu-jogo.mp3");
   audioPerdedor.play();
@@ -245,6 +246,7 @@ function winGame() {
 	maincontent.classList.add("hide")
   timerElement.classList.add("hide")
   progressBarBorder.classList.add("hide");
+  instructions.classList.add("hide");
   /*audio vencedor*/
   audioVencedor = new Audio("./assets/audio/ganhou-jogo.mp3");
   audioVencedor.play();

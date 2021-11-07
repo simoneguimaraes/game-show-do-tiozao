@@ -118,7 +118,7 @@ nextButton.addEventListener("click", () => {
 
 // a cada nova pergunta, ele vai buscar o array de respostas
 function setNextQuestion() {
-  seconds = 30;
+  seconds = 60;
   questionElement.innerHTML = currentQuestion.question;
   for (let i = 0; i < answerButtonsElement.children.length; i++) {
 	  if(answerButtonsElement.children[i].classList.contains("correct")) {
@@ -180,7 +180,7 @@ function winCheck(counter) {
   }
 }
 
-//timer com 30 segundos para responder
+//timer com 60 segundos para responder
 function updateTimerElement() {
   timerElement.innerHTML = `<i class="fas fa-clock">`
   timerElement.innerHTML += ` ${seconds}` 

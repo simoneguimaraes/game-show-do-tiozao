@@ -1,6 +1,6 @@
 # Show do Tiozão
-## Quiz divertido para jogar com a família!
-
+## Quiz em JavaScript Vanilla
+Jogo *mobile-first*, feito com manipulação de DOM e CSS puro.
 
 Clique <a href="https://simoneguimaraes.github.io/game-show-do-tiozao/" target="_blank"> nesse link</a> para jogar.
 
